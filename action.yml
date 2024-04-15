@@ -42,6 +42,11 @@ inputs:
     description: Image tag, e.g. latest. Will overwrite the tag latest tag on a push, and have no effect on a release.
     required: false
 
+  platform:
+    description: Single platform or Multi-platform
+    required: true
+    default: "linux/amd64"
+
 runs:
   using: "composite"
   steps:
@@ -90,6 +95,7 @@ runs:
         # https://docs.docker.com/engine/reference/commandline/build/#specifying-external-cache-sources
         set -x
         >&0 docker build \
+          --platform ${{ inputs.platform }}
           --file ${{ inputs.dockerfile }} \
           --cache-from ${{ inputs.repository }}/${IMAGE_NAME}:latest \
           --build-arg BUILDKIT_INLINE_CACHE=1 \
