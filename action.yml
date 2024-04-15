@@ -1,5 +1,5 @@
 name: "push-to-ghcr"
-author: "@macbre"
+author: "@pva2007"
 description: "This action simplifies pushes of Docker images ot ghcr.io repository"
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#branding
 branding:
